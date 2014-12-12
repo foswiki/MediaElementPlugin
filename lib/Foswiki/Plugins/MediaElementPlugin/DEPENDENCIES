@@ -1,0 +1,3 @@
+Foswiki::Plugins::JQueryPlugin,>=4.10,perl,Required
+Foswiki::Plugins::ImagePlugin,>=5.00,perl,Required
+Foswiki::Contrib::XSendFileContrib,>=3.00,perl,Optional

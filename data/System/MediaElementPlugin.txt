@@ -1,0 +1,98 @@
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1418394213" format="1.1"  version="1"}%
+---+!! %TOPIC%
+%SHORTDESCRIPTION%
+
+%TOC%
+
+This plugin adds media support to Foswiki using [[http://mediaelementjs.com/][MediaElement.js]]. !MediaElement.js is an easy
+cross-browser HTML5 audio and video player in pure HTML and CSS while providing a Flash or Silverlight fallback
+for older browsers.  
+!MediaElement.js is a fully skinnable player with features like support for the &lt;track> element, fullscreen video, and even Ambilight.
+It provides a consistent experience regardless of what codecs and plugins browsers support. 
+
+Note that %TOPIC% is _not_ implementing a streaming media server, nor is it converting audio and video files in appropriate
+file formats understood by today's browsers.
+
+For best compatibility use MP3 for audio and MP4 for video files. While supported by !MediaElement.js it is _not_ recommended to
+convert videos to FLV format as these files can only be displayed using a flash media player, but not natively by browsers following
+HTML5 specifications.
+
+Also try to keep audio and video files small, i.e. don't try to upload rather long media files to Foswiki trying to play them back using
+!MediaElement.js.
+
+It is recommended to secure your attachments using Foswiki:Extensions/XSendFileContrib and _not_ using Foswiki's native =viewfile= method.
+This will relive Foswiki from the pure delivery of the media files and instead delegate the actual process of sending over files to
+the HTTP server in use.
+
+---++ Usage
+
+To embed a video or audio file into Foswiki, just upload it and add 
+
+<verbatim class="tml">
+%VIDEO{"myvideo.mp4"}%
+</verbatim>
+
+to the topic page. You should get something similar to this:
+
+<img src="%ATTACHURLPATH%/Video.png" width="560" height="315" />
+
+Similarly, add
+
+<verbatim class="tml">
+%AUDIO{"mysong.mp3"}%
+</verbatim>
+
+to render an audio player for your song as part of the page.
+
+<img src="%ATTACHURLPATH%/Audio.png" width="400" height="29" />
+
+---++ Syntax
+
+---+++ VIDEO
+
+| *Parameter* | *Description* | *Default* |
+| "..." | video file to be displayed, or comma-separated list of videos in alternative file formats being presented to the user's browser | |
+| topic | topic to look for the video file | current topic |
+| mime | specify mime type of the video file | derived from video file |
+| width | width of video player | 320 |
+| height | height of video player | 240 |
+| controls | boolean to switch on/off controls of the player | on |
+| preload | boolean whether the player should pre-load the beginning of the video when the page is loaded | off |
+| autoplay | boolean whether the video should immediately start playing when the page containing the %VIDEO macro is loaded | off |
+| rotate | degrees to which the video should be rotated; this comes in handy when videos have been uploaded from a mobile camera  | 0 |
+| poster | url of still image to be displayed as long as the video didn't start playing yet | extracted from video using Foswiki:Extensions/ImagePlugin |
+| frame | the frame of the video to be extracted as a poster | 0 |
+| id | HTML id for the video element holding the player | random |
+| skin | name of the skin used for the player: "default", "ted" or "wmp" | default |
+
+---+++ AUDIO
+
+| *Parameter* | *Description* | *Default* |
+| "..." | audio file to be displayed | |
+| topic | topic to look for the audio file | current topic |
+| preload | boolean whether the player should pre-load the beginning of the audio file when the page is loaded | off |
+| autoplay | boolean whether the audio should immediately start playing when the page containing the %AUDIO macro is loaded | off |
+| skin | name of the skin used for the player: "default", "ted" or "wmp" | default |
+
+---++ Installation Instructions
+
+%$INSTALL_INSTRUCTIONS%
+
+---++ Info
+<!--
+   * Set SHORTDESCRIPTION = %$SHORTDESCRIPTION%
+-->
+
+|  Author(s): | Michael Daum|
+|  Copyright: | &copy; 2010-2014, John Dyer http://j.hn, &copy; 2014 Michael Daum http://michaeldaumconsulting.com |
+|  License: | [[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]] |
+|  Release: | %$RELEASE% |
+|  Version: | %$VERSION% |
+|  Change History: | <!-- versions below in reverse order -->&nbsp; |
+|  12 Dec 2014: | initial release |
+|  Dependencies: | %$DEPENDENCIES% |
+|  Home page: | Foswiki:Extensions/%TOPIC% |
+|  Support: | Foswiki:Support/%TOPIC% |
+
+%META:FILEATTACHMENT{name="Audio.png" attachment="MediaElementSnap3.png" attr="" comment="" date="1418394213" size="2461" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1418394213" size="189478" user="ProjectContributor" version="1"}%

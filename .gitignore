@@ -1,0 +1,10 @@
+*.gz
+*,v
+git
+igp_*
+pub/System/MediaElementPlugin/mediaelement-and-player.js
+pub/System/MediaElementPlugin/mediaelement.init.js
+pub/System/MediaElementPlugin/mediaelement.js
+pub/System/MediaElementPlugin/mediaelementplayer.css
+pub/System/MediaElementPlugin/mediaelementplayer.js
+pub/System/MediaElementPlugin/mejs-skins.css
