@@ -8,3 +8,11 @@ pub/System/MediaElementPlugin/mediaelement.js
 pub/System/MediaElementPlugin/mediaelementplayer.css
 pub/System/MediaElementPlugin/mediaelementplayer.js
 pub/System/MediaElementPlugin/mejs-skins.css
+*.swp
+MediaElementPlugin.md5
+MediaElementPlugin.sha1
+MediaElementPlugin.tgz
+MediaElementPlugin.txt
+MediaElementPlugin.zip
+MediaElementPlugin_installer
+MediaElementPlugin_installer.pl
