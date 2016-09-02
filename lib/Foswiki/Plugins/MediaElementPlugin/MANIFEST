@@ -1,6 +1,8 @@
 data/System/MediaElementPlugin.txt 0644
 lib/Foswiki/Plugins/MediaElementPlugin/Core.pm 0644
+lib/Foswiki/Plugins/MediaElementPlugin/DEPENDENCIES 0644
 lib/Foswiki/Plugins/MediaElementPlugin.pm 0644
+pub/System/MediaElementPlugin/Audio.png 0644
 pub/System/MediaElementPlugin/background.png 0644
 pub/System/MediaElementPlugin/bigplay.fw.png 0644
 pub/System/MediaElementPlugin/bigplay.png 0644
@@ -33,5 +35,12 @@ pub/System/MediaElementPlugin/mediaelement.uncompressed.js 0644
 pub/System/MediaElementPlugin/mejs-skins.css 0644
 pub/System/MediaElementPlugin/mejs-skins.css.gz 0644
 pub/System/MediaElementPlugin/mejs-skins.uncompressed.css 0644
+pub/System/MediaElementPlugin/pkg.css 0644
+pub/System/MediaElementPlugin/pkg.css.gz 0644
+pub/System/MediaElementPlugin/pkg.js 0644
+pub/System/MediaElementPlugin/pkg.js.gz 0644
+pub/System/MediaElementPlugin/pkg.uncompressed.css 0644
+pub/System/MediaElementPlugin/pkg.uncompressed.js 0644
 pub/System/MediaElementPlugin/silverlightmediaelement.xap 0644
 pub/System/MediaElementPlugin/skipback.png 0644
+pub/System/MediaElementPlugin/Video.png 0644

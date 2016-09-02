@@ -1,37 +1,48 @@
 FOSWIKI_ROOT?=~/foswiki/core
 TARGET= \
-  mediaelement.init.js \
-	background.png \
-	bigplay.fw.png \
-	bigplay.png \
-	bigplay.svg \
-	controls.fw.png \
-	controls.png \
-	controls.svg \
-	controls-ted.png \
-	controls-wmp-bg.png \
-	controls-wmp.png \
-	flashmediaelement-cdn.swf \
-	flashmediaelement.swf \
-	loading.gif \
-  mediaelement-and-player.js \
-	mediaelement.js \
-	mediaelementplayer.css \
-	mediaelementplayer.js \
-	mejs-skins.css \
-	silverlightmediaelement.xap \
-	skipback.png 
+  pkg.js \
+  pkg.css \
+  background.png \
+  bigplay.fw.png \
+  bigplay.png \
+  bigplay.svg \
+  controls.fw.png \
+  controls.png \
+  controls.svg \
+  controls-ted.png \
+  controls-wmp-bg.png \
+  controls-wmp.png \
+  flashmediaelement-cdn.swf \
+  flashmediaelement.swf \
+  loading.gif \
+  mediaelement.js \
+  mediaelementplayer.js \
+  silverlightmediaelement.xap \
+  skipback.png 
 
 -include $(FOSWIKI_ROOT)/pub/System/JQueryPlugin/Makefile.include
+
+
+.PHONY: git
+
+git:
+	git clone https://github.com/johndyer/mediaelement.git git
 
 clean:
 	rm $(TARGET) *.gz
 
-%.gif: git/local-build/%.gif
+pkg.uncompressed.js: mediaelement-and-player.uncompressed.js mediaelement.init.uncompressed.js
+	@$(CAT) $^ > $@
+
+pkg.uncompressed.css: mediaelementplayer.css mejs-skins.css
+	@$(CAT) $^ > $@
+
+ifneq (,$(wildcard git))
+%.gif: git/build/%.gif
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-%.png: git/local-build/%.png
+%.png: git/build/%.png
 	@echo copying $@
 	@$(CAT) $^ > $@
 
@@ -39,7 +50,7 @@ clean:
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-%.svg: git/local-build/%.svg
+%.svg: git/build/%.svg
 	@echo copying $@
 	@$(CAT) $^ > $@
 
@@ -47,27 +58,28 @@ clean:
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mejs-skins.uncompressed.css: git/local-build/mejs-skins.css
+mejs-skins.uncompressed.css: git/build/mejs-skins.css
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mediaelement-and-player.uncompressed.js: git/local-build/mediaelement-and-player.js
+mediaelement-and-player.uncompressed.js: git/build/mediaelement-and-player.js
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mediaelement.uncompressed.js: git/local-build/mediaelement.js
+mediaelement.uncompressed.js: git/build/mediaelement.js
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mediaelement.uncompressed.css: git/local-build/mediaelement.css
+mediaelement.uncompressed.css: git/build/mediaelement.css
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mediaelementplayer.uncompressed.css: git/local-build/mediaelementplayer.css
+mediaelementplayer.uncompressed.css: git/build/mediaelementplayer.css
 	@echo copying $@
 	@$(CAT) $^ > $@
 
-mediaelementplayer.uncompressed.js: git/local-build/mediaelementplayer.js
+mediaelementplayer.uncompressed.js: git/build/mediaelementplayer.js
 	@echo copying $@
 	@$(CAT) $^ > $@
+endif
 

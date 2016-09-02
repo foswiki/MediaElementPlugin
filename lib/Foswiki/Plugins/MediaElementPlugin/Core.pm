@@ -31,11 +31,11 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'MediaElement',
-      version => '2.16.2',
+      version => '2.22.1',
       author => 'John Dyer',
       homepage => 'http://mediaelementjs.com',
-      css => ['mediaelementplayer.css', 'mejs-skins.css'],
-      javascript => ['mediaelement-and-player.js', 'mediaelement.init.js'],
+      css => ['pkg.css'],
+      javascript => ['pkg.js'],
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin',
       dependencies => ["livequery"],
     ),
@@ -58,7 +58,7 @@ sub handleVIDEO {
   my @videos = ();
   foreach my $file (split/\s*,\s*/, $video) {
     my $url;
-    if ($file =~ /^https?::/i) {
+    if ($file =~ /^https?:/i) {
       $url = $file
     } else {
       $url = Foswiki::Func::getPubUrlPath() . '/' . $web . '/' . $topic . '/' . $file;
@@ -144,7 +144,7 @@ sub handleAUDIO {
   $class="class='mejs-$skin" if $skin;
 
   my $url = '';
-  unless ($url =~ /^https?::/i) {
+  unless ($url =~ /^https?:/i) {
     $url = Foswiki::Func::getPubUrlPath() . '/' . $web . '/' . $topic . '/' . $audio;
   }
 
@@ -158,7 +158,7 @@ HERE
 sub getMimeType {
   my ($this, $file) = @_;
 
-  my $mimeType = 'vide/mp4';
+  my $mimeType = 'video/mp4';
 
   if ($file && $file =~ /\.([^.]+)$/) {
     my $suffix = $1;
@@ -180,7 +180,7 @@ sub getMimeType {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2013 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2013-2016 Michael Daum http://michaeldaumconsulting.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
