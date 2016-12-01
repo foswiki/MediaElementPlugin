@@ -81,6 +81,8 @@ to render an audio player for your song as part of the page.
 %$DEPENDENCIES%
 
 ---++ Change History
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  01 Dec 2016: | upgraded to mediaelement-2.23.4; use Foswiki::Func api to read files (oops) |
 |  02 Sep 2016: | updated to latest release of mejs |
 |  12 Dec 2014: | initial release |
 

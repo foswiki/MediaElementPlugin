@@ -19,8 +19,8 @@ use strict;
 use warnings;
 use Foswiki::Plugins::JQueryPlugin ();
 
-our $VERSION = '2.00';
-our $RELEASE = '02 Sep 2016';
+our $VERSION = '2.01';
+our $RELEASE = '01 Dec 2016';
 our $SHORTDESCRIPTION = "Cross-browser embedding of videos and audios";
 our $NO_PREFS_IN_TOPIC = 1;
 

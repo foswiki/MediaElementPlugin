@@ -31,7 +31,7 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'MediaElement',
-      version => '2.22.1',
+      version => '2.23.4',
       author => 'John Dyer',
       homepage => 'http://mediaelementjs.com',
       css => ['pkg.css'],
@@ -54,6 +54,17 @@ sub handleVIDEO {
   ($web, $topic) = Foswiki::Func::normalizeWebTopicName($web, $topic);
 
   my $mimeType = $params->{mime};
+  my $frame = $params->{frame} || 0;
+  my $width = $params->{width} || 320;
+  my $height = $params->{height} || '240';
+  my $placeholder = '%MAKETEXT{"No video playback capabilities"}%';
+
+  my $rotate = $params->{rotate};
+  my $style = '';
+  if ($rotate) {
+    $style = "style='-moz-transform:rotate(${rotate}deg);-webkit-transform:rotate(${rotate}deg);-o-transform:rotate(${rotate}deg);-ms-transform:rotate(${rotate}deg);transform:rotate(${rotate}deg);'";
+  }
+
 
   my @videos = ();
   foreach my $file (split/\s*,\s*/, $video) {
@@ -62,6 +73,12 @@ sub handleVIDEO {
       $url = $file
     } else {
       $url = Foswiki::Func::getPubUrlPath() . '/' . $web . '/' . $topic . '/' . $file;
+
+      my $filePath = $Foswiki::cfg{PubDir} . '/' . $web . '/' . $topic . '/' . $file;
+      unless (-f $filePath) {
+        print STDERR "file not found: $filePath\n";
+        next;
+      }
     }
 
     push @videos, {
@@ -70,13 +87,12 @@ sub handleVIDEO {
       file => $file,
       url => $url,
       mimeType => $mimeType || $this->getMimeType($file),
+      poster => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' format="$src" crop="on" '.($rotate?'rotate="'.$rotate.'"':'').' warn="off"}%',
+      placeholder => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' title="'.$placeholder.'" type="plain" crop="on"}%',
     }
   }
 
   my $videos = join("\n", map {"<source type='$_->{mimeType}' src='$_->{url}'>"} @videos);
-
-  my $width = $params->{width} || 320;
-  my $height = $params->{height} || '240';
 
   my $controls = "";
   my $controlsBool = "false";
@@ -92,24 +108,16 @@ sub handleVIDEO {
   my $class = '';
   $class="class='mejs-$skin" if $skin && $skin ne 'default';
 
-
-  my $rotate = $params->{rotate};
-  my $style = '';
-  if ($rotate) {
-    $style = "style='-moz-transform:rotate(${rotate}deg);-webkit-transform:rotate(${rotate}deg);-o-transform:rotate(${rotate}deg);-ms-transform:rotate(${rotate}deg);transform:rotate(${rotate}deg);'";
-  }
-
-  my $frame = $params->{frame} || 0;
   my $poster = $params->{poster} || '';
-  my $placeholder = '%MAKETEXT{"No video playback capabilities}%';
   if (!$autoplay && $poster !~ /^(none|off)$/) {
     if ($poster) {
       $poster = 'poster="'.$poster.'"';
     } else {
-      $poster = 'poster="%IMAGE{"'.$videos[0]{url}.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' format="$src" crop="on" '.($rotate?'rotate="'.$rotate.'"':'').'}%"';
-      $placeholder = '%IMAGE{"'.$videos[0]{url}.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' title="'.$placeholder.'" type="plain" crop="on"}%';
+      $poster = "poster=$videos[0]{poster}";
+      $placeholder = $videos[0]{placeholder};
     }
   }
+
 
   my $id = $params->{id} || "mej-". (int( rand(10000) ) + 1);
 
@@ -123,7 +131,6 @@ sub handleVIDEO {
     </object>
 </video>
 HERE
-
 
   return $result;
 }
@@ -164,7 +171,7 @@ sub getMimeType {
     my $suffix = $1;
     
     unless ($this->{types}) {
-      $this->{types} = Foswiki::readFile($Foswiki::cfg{MimeTypesFileName});
+      $this->{types} = Foswiki::Func::readFile($Foswiki::cfg{MimeTypesFileName});
     }
 
     if ($this->{types} =~ /^([^#]\S*).*?\s$suffix(?:\s|$)/im) {
