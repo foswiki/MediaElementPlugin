@@ -2,7 +2,7 @@
 jQuery(function($) {
   var defaults = {};
 
-  $("audio,video").livequery(function() {
+  $("audio.jqMediaElement, video.jqMediaElement").livequery(function() {
     var $this = $(this), 
         opts = $.extend({}, defaults, $this.data());
 

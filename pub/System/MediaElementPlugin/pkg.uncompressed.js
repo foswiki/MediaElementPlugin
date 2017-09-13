@@ -6222,8 +6222,8 @@ if (typeof jQuery != 'undefined') {
 					// handle clicks to the source radio buttons
 					.delegate('input[type=radio]', 'click', function() {
 						// set aria states
-						$(this).attr('aria-selected', true).attr('checked', 'checked');
-						$(this).closest('.mejs-sourcechooser-selector').find('input[type=radio]').not(this).attr('aria-selected', 'false').removeAttr('checked');
+						$(this).attr('aria-selected', true).prop('checked', true);
+						$(this).closest('.mejs-sourcechooser-selector').find('input[type=radio]').not(this).attr('aria-selected', 'false').prop('checked', false);
 
 						var src = this.value;
 
@@ -6652,11 +6652,12 @@ Marker position and a reference to the MediaElement Player object is passed to t
 
         }
     });
-})(mejs.$);"use strict";
+})(mejs.$);
+"use strict";
 jQuery(function($) {
   var defaults = {};
 
-  $("audio,video").livequery(function() {
+  $("audio.jqMediaElement, video.jqMediaElement").livequery(function() {
     var $this = $(this), 
         opts = $.extend({}, defaults, $this.data());
 

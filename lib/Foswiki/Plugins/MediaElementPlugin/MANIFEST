@@ -1,3 +1,4 @@
+!noci
 data/System/MediaElementPlugin.txt 0644
 lib/Foswiki/Plugins/MediaElementPlugin/Core.pm 0644
 lib/Foswiki/Plugins/MediaElementPlugin/DEPENDENCIES 0644

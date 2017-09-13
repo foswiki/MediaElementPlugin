@@ -88,7 +88,7 @@ sub handleVIDEO {
       url => $url,
       mimeType => $mimeType || $this->getMimeType($file),
       poster => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' format="$src" crop="on" '.($rotate?'rotate="'.$rotate.'"':'').' warn="off"}%',
-      placeholder => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' title="'.$placeholder.'" type="plain" crop="on"}%',
+      placeholder => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' title="'.$placeholder.'" type="plain" crop="on" warn="off"}%',
     }
   }
 
@@ -106,7 +106,7 @@ sub handleVIDEO {
 
   my $skin = $params->{skin} || '';
   my $class = '';
-  $class="class='mejs-$skin" if $skin && $skin ne 'default';
+  $class="mejs-$skin" if $skin && $skin ne 'default';
 
   my $poster = $params->{poster} || '';
   if (!$autoplay && $poster !~ /^(none|off)$/) {
@@ -122,7 +122,7 @@ sub handleVIDEO {
   my $id = $params->{id} || "mej-". (int( rand(10000) ) + 1);
 
   my $result = <<HERE;
-<video id="$id" $class $style width="$width" height="$height" $poster $controls $autoplay $preload>
+<video id="$id" class="jqMediaElement $class" $style width="$width" height="$height" $poster $controls $autoplay $preload>
     $videos
     <object width="$width" height="$height" type="application/x-shockwave-flash" data="%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin/flashmediaelement.swf">
         <param name="movie" value="%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin/flashmediaelement.swf" />
@@ -148,7 +148,7 @@ sub handleAUDIO {
   my $skin = $params->{skin} || '';
 
   my $class = '';
-  $class="class='mejs-$skin" if $skin;
+  $class="mejs-$skin" if $skin;
 
   my $url = '';
   unless ($url =~ /^https?:/i) {
@@ -156,7 +156,7 @@ sub handleAUDIO {
   }
 
   my $result = <<HERE;
-<audio $class src="$url" $autoplay $preload></audio>
+<audio class="jqMediaElement $class" src="$url" $autoplay $preload></audio>
 HERE
 
   return $result;
@@ -187,7 +187,7 @@ sub getMimeType {
 __END__
 Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 
-Copyright (C) 2013-2016 Michael Daum http://michaeldaumconsulting.com
+Copyright (C) 2013-2017 Michael Daum http://michaeldaumconsulting.com
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

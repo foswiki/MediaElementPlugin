@@ -6222,8 +6222,8 @@ if (typeof jQuery != 'undefined') {
 					// handle clicks to the source radio buttons
 					.delegate('input[type=radio]', 'click', function() {
 						// set aria states
-						$(this).attr('aria-selected', true).attr('checked', 'checked');
-						$(this).closest('.mejs-sourcechooser-selector').find('input[type=radio]').not(this).attr('aria-selected', 'false').removeAttr('checked');
+						$(this).attr('aria-selected', true).prop('checked', true);
+						$(this).closest('.mejs-sourcechooser-selector').find('input[type=radio]').not(this).attr('aria-selected', 'false').prop('checked', false);
 
 						var src = this.value;
 
