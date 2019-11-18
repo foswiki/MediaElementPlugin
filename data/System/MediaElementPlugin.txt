@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1418394213" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1574085126" format="1.1"  version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -12,13 +12,6 @@ It provides a consistent experience regardless of what codecs and plugins browse
 
 Note that %TOPIC% is _not_ implementing a streaming media server, nor is it converting audio and video files in appropriate
 file formats understood by today's browsers.
-
-For best compatibility use MP3 for audio and MP4 for video files. While supported by !MediaElement.js it is _not_ recommended to
-convert videos to FLV format as these files can only be displayed using a flash media player, but not natively by browsers following
-HTML5 specifications.
-
-Also try to keep audio and video files small, i.e. don't try to upload rather long media files to Foswiki trying to play them back using
-!MediaElement.js.
 
 It is recommended to secure your attachments using Foswiki:Extensions/XSendFileContrib and _not_ using Foswiki's native =viewfile= method.
 This will relive Foswiki from the pure delivery of the media files and instead delegate the actual process of sending over files to
@@ -82,17 +75,18 @@ to render an audio player for your song as part of the page.
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  18 Nov 2019: | upgraded to latest version of mediaelement.js; removed support for flash and silverlight |
 |  05 Mar 2018: | added missing png file |
 |  13 Sep 2017: | only initialized video and audio elements of type =.jqMediaElement= |
 |  01 Dec 2016: | upgraded to mediaelement-2.23.4; use Foswiki::Func api to read files (oops) |
 |  02 Sep 2016: | updated to latest release of mejs |
 |  12 Dec 2014: | initial release |
 
-%META:FILEATTACHMENT{name="Audio.png" attachment="MediaElementSnap3.png" attr="" comment="" date="1418394213" size="2461" user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1418394213" size="189478" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="Audio.png" attachment="MediaElementSnap3.png" attr="" comment="" date="1574085126" size="2461" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1574085126" size="189478" user="ProjectContributor" version="1"}%
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2017 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2019 Michael Daum http://michaeldaumconsulting.com"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
