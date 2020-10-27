@@ -10,6 +10,8 @@ pub/System/MediaElementPlugin/build/pkg.css 0644
 pub/System/MediaElementPlugin/build/pkg.css.gz 0644
 pub/System/MediaElementPlugin/build/pkg.js 0644
 pub/System/MediaElementPlugin/build/pkg.js.gz 0644
+pub/System/MediaElementPlugin/build/pkg.uncompressed.css 0644
+pub/System/MediaElementPlugin/build/pkg.uncompressed.js 0644
 pub/System/MediaElementPlugin/lang/ca.js 0644
 pub/System/MediaElementPlugin/lang/ca.js.gz 0644
 pub/System/MediaElementPlugin/lang/ca.uncompressed.js 0644
@@ -68,6 +70,9 @@ pub/System/MediaElementPlugin/lang/sk.uncompressed.js 0644
 pub/System/MediaElementPlugin/lang/sv.js 0644
 pub/System/MediaElementPlugin/lang/sv.js.gz 0644
 pub/System/MediaElementPlugin/lang/sv.uncompressed.js 0644
+pub/System/MediaElementPlugin/lang/tr.js 0644
+pub/System/MediaElementPlugin/lang/tr.js.gz 0644
+pub/System/MediaElementPlugin/lang/tr.uncompressed.js 0644
 pub/System/MediaElementPlugin/lang/uk.js 0644
 pub/System/MediaElementPlugin/lang/uk.js.gz 0644
 pub/System/MediaElementPlugin/lang/uk.uncompressed.js 0644
@@ -81,6 +86,4 @@ pub/System/MediaElementPlugin/lib/mediaelement-and-player.js 0644
 pub/System/MediaElementPlugin/lib/mediaelementplayer.css 0644
 pub/System/MediaElementPlugin/Makefile 0644
 pub/System/MediaElementPlugin/src/mediaelement.init.uncompressed.js 0644
-pub/System/MediaElementPlugin/src/pkg.uncompressed.css 0644
-pub/System/MediaElementPlugin/src/pkg.uncompressed.js 0644
 pub/System/MediaElementPlugin/Video.png 0644

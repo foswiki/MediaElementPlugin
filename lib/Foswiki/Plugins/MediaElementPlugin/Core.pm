@@ -1,6 +1,6 @@
 # Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 # 
-# Copyright (C) 2013-2019 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2013-2020 Michael Daum http://michaeldaumconsulting.com
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -45,12 +45,12 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'MediaElement',
-      version => '4.2.10',
+      version => '4.2.16',
       author => 'John Dyer',
       homepage => 'http://mediaelementjs.com',
-      css => ['build/pkg.css'],
-      javascript => ['build/pkg.js'],
-      puburl => '%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin',
+      puburl => '%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin/build',
+      css => ['pkg.css'],
+      javascript => ['pkg.js'],
     ),
     $class
   );
@@ -68,13 +68,13 @@ sub handleVIDEO {
 
   my $mimeType = $params->{mime};
   my $frame = $params->{frame} || 0;
-  my $width = $params->{width} || 320;
-  my $height = $params->{height} || '240';
+  my $width = $params->{width};
+  my $height = $params->{height};
 
   my $rotate = $params->{rotate};
   my $style = '';
   if ($rotate) {
-    $style = "style='-moz-transform:rotate(${rotate}deg);-webkit-transform:rotate(${rotate}deg);-o-transform:rotate(${rotate}deg);-ms-transform:rotate(${rotate}deg);transform:rotate(${rotate}deg);'";
+    $style = "-moz-transform:rotate(${rotate}deg);-webkit-transform:rotate(${rotate}deg);-o-transform:rotate(${rotate}deg);-ms-transform:rotate(${rotate}deg);transform:rotate(${rotate}deg)";
   }
 
 
@@ -99,7 +99,11 @@ sub handleVIDEO {
       file => $file,
       url => $url,
       mimeType => $mimeType || $this->getMimeType($file),
-      poster => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" width="'.$width.'" '.($height ne 'auto'?'height="'.$height.'"':'').' format="$src" crop="on" '.($rotate?'rotate="'.$rotate.'"':'').' warn="off"}%',
+      poster => '%IMAGE{"'.$url.'" frame="'.$frame.'" output="png" '
+        . ((defined $width && $width =~ /^\d+$/) ? 'width="'.$width.'" ':"")
+        . ((defined $height && $height =~ /^\d+$/) ? 'height="'.$height.'"':'')
+        . ' format="$src" crop="off" '
+        . ($rotate ? 'rotate="' . $rotate . '"':'').' warn="off"}%',
     }
   }
 
@@ -128,11 +132,17 @@ sub handleVIDEO {
     }
   }
 
+  my $stretch = $params->{stretch} || (defined $width || defined $height) ? 'none' : 'responsive';
+  if ($stretch) {
+    $stretch = "data-stretching='$stretch'";
+  }
 
   my $id = $params->{id} || "mej-". (int( rand(10000) ) + 1);
+  $width = (defined $width) ? "width='$width'": "";
+  $height = (defined $height) ? "height='$height'": "";
 
   my $result = <<HERE;
-<video id="$id" class="jqMediaElement $class" $style width="$width" height="$height" $poster $controls $autoplay $preload>
+<video id="$id" class="jqMediaElement $class" style="max-width:100%;$style" $width $height $poster $controls $autoplay $preload $stretch>
 $videos
 </video>
 HERE

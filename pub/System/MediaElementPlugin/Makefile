@@ -1,12 +1,10 @@
 FOSWIKI_ROOT?=~/foswiki/core
-LIB_DIR=lib
-BUILD_DIR=build
 
 TARGET= \
   $(BUILD_DIR)/pkg.js \
   $(BUILD_DIR)/pkg.css \
   $(BUILD_DIR)/mejs-controls.png \
-  $(BUILD_DIR)/mejs-controls.svg 
+  $(BUILD_DIR)/mejs-controls.svg
 
 SUBDIRS=lang
 
@@ -22,10 +20,15 @@ git:
 clean:
 	rm -f $(TARGET) $(BUILD_DIR)/*
 
-$(SRC_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js
+$(BUILD_DIR)/%.js: $(BUILD_DIR)/%.uncompressed.js
+	@echo minifying $@ from $<
+	@$(JSMIN) $< > $@; \
+
+$(BUILD_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js
+	@echo generating $@
 	@$(CAT) $^ > $@
 
-$(SRC_DIR)/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css 
+$(BUILD_DIR)/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css
 	@echo getting from upstream $@
 	@$(CAT) $^ > $@
 

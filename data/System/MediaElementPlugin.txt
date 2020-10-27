@@ -57,6 +57,7 @@ to render an audio player for your song as part of the page.
 | frame | the frame of the video to be extracted as a poster | 0 |
 | id | HTML id for the video element holding the player | random |
 | skin | name of the skin used for the player: "default", "ted" or "wmp" | default |
+| stretch | configure stretching of video geometry | responsive (unless a width and/or height are specified) |
 
 ---+++ AUDIO
 
@@ -75,6 +76,9 @@ to render an audio player for your song as part of the page.
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  27 Oct 2020: | update to mediaelement-4.2.16; \
+                  don't hard-code defaults for width and height; \
+                  new =stretch= parameter |
 |  18 Nov 2019: | upgraded to latest version of mediaelement.js; removed support for flash and silverlight |
 |  05 Mar 2018: | added missing png file |
 |  13 Sep 2017: | only initialized video and audio elements of type =.jqMediaElement= |
@@ -86,7 +90,7 @@ to render an audio player for your song as part of the page.
 %META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1574085126" size="189478" user="ProjectContributor" version="1"}%
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2019 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2020 Michael Daum"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
