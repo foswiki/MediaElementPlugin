@@ -1,6 +1,6 @@
 # Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 # 
-# Copyright (C) 2013-2020 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2013-2024 Michael Daum http://michaeldaumconsulting.com
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -45,9 +45,9 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'MediaElement',
-      version => '4.2.16',
+      version => '7.0.2',
       author => 'John Dyer',
-      homepage => 'http://mediaelementjs.com',
+      homepage => 'https://www.mediaelementjs.com',
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin/build',
       css => ['pkg.css'],
       javascript => ['pkg.js'],
@@ -128,7 +128,7 @@ sub handleVIDEO {
     if ($poster) {
       $poster = 'poster="'.$poster.'"';
     } else {
-      $poster = 'poster="'.$videos[0]{poster}.'"';
+      $poster = 'poster="'.$videos[0]{poster}.'"' if defined $videos[0]{poster};
     }
   }
 

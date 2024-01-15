@@ -4,8 +4,8 @@ lib/Foswiki/Plugins/MediaElementPlugin/Core.pm 0644
 lib/Foswiki/Plugins/MediaElementPlugin/DEPENDENCIES 0644
 lib/Foswiki/Plugins/MediaElementPlugin.pm 0644
 pub/System/MediaElementPlugin/Audio.png 0644
-pub/System/MediaElementPlugin/build/mejs-controls.png 0644
 pub/System/MediaElementPlugin/build/mejs-controls.svg 0644
+pub/System/MediaElementPlugin/build/mejs-controls.svg.gz 0644
 pub/System/MediaElementPlugin/build/pkg.css 0644
 pub/System/MediaElementPlugin/build/pkg.css.gz 0644
 pub/System/MediaElementPlugin/build/pkg.js 0644

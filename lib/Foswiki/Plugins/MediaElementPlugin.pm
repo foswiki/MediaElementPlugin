@@ -1,6 +1,6 @@
 # Plugin for Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 #
-# MediaElementPlugin is Copyright (C) 2014-2020 Michael Daum http://michaeldaumconsulting.com
+# MediaElementPlugin is Copyright (C) 2013-2024 Michael Daum http://michaeldaumconsulting.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,9 +19,10 @@ use strict;
 use warnings;
 use Foswiki::Plugins::JQueryPlugin ();
 
-our $VERSION = '3.10';
-our $RELEASE = '21 May 2020';
+our $VERSION = '3.20';
+our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = "Cross-browser embedding of videos and audios";
+our $LICENSECODE = '%$LICENSECODE%';
 our $NO_PREFS_IN_TOPIC = 1;
 
 sub initPlugin {

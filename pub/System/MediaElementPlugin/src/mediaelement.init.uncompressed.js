@@ -1,6 +1,7 @@
 "use strict";
 jQuery(function($) {
   var defaults = {
+    iconSprite: foswiki.getPreference("PUBURLPATH") + "/System/MediaElementPlugin/build/mejs-controls.svg"
   };
 
   $("audio.jqMediaElement, video.jqMediaElement").livequery(function() {

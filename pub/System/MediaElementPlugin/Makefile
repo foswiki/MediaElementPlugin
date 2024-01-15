@@ -3,7 +3,6 @@ FOSWIKI_ROOT?=~/foswiki/core
 TARGET= \
   $(BUILD_DIR)/pkg.js \
   $(BUILD_DIR)/pkg.css \
-  $(BUILD_DIR)/mejs-controls.png \
   $(BUILD_DIR)/mejs-controls.svg
 
 SUBDIRS=lang
@@ -15,7 +14,7 @@ SUBDIRS=lang
 .PRECIOUS: %.uncompressed.js
 
 git:
-	git clone https://github.com/johndyer/mediaelement.git git
+	git clone https://github.com/mediaelement/mediaelement.git git
 
 clean:
 	rm -f $(TARGET) $(BUILD_DIR)/*
