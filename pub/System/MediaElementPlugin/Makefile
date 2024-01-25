@@ -27,7 +27,7 @@ $(BUILD_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DI
 	@echo generating $@
 	@$(CAT) $^ > $@
 
-$(BUILD_DIR)/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css
+$(BUILD_DIR)/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css $(SRC_DIR)/styles.uncompressed.css
 	@echo getting from upstream $@
 	@$(CAT) $^ > $@
 

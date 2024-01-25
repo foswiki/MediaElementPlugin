@@ -86,4 +86,5 @@ pub/System/MediaElementPlugin/lib/mediaelement-and-player.js 0644
 pub/System/MediaElementPlugin/lib/mediaelementplayer.css 0644
 pub/System/MediaElementPlugin/Makefile 0644
 pub/System/MediaElementPlugin/src/mediaelement.init.uncompressed.js 0644
+pub/System/MediaElementPlugin/src/styles.uncompressed.css 0644
 pub/System/MediaElementPlugin/Video.png 0644
