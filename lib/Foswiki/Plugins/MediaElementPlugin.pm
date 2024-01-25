@@ -19,7 +19,7 @@ use strict;
 use warnings;
 use Foswiki::Plugins::JQueryPlugin ();
 
-our $VERSION = '3.20';
+our $VERSION = '3.21';
 our $RELEASE = '%$RELEASE%';
 our $SHORTDESCRIPTION = "Cross-browser embedding of videos and audios";
 our $LICENSECODE = '%$LICENSECODE%';
