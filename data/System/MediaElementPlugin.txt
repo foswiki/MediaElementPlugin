@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1574085126" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1736790430" format="1.1"  version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -56,6 +56,7 @@ to render an audio player for your song as part of the page.
 | poster | url of still image to be displayed as long as the video didn't start playing yet | extracted from video using Foswiki:Extensions/ImagePlugin |
 | frame | the frame of the video to be extracted as a poster | 0 |
 | id | HTML id for the video element holding the player | random |
+| start | seconds when to start the video | 0 |
 | skin | name of the skin used for the player: "default", "ted" or "wmp" | default |
 | stretch | configure stretching of video geometry | responsive (unless a width and/or height are specified) |
 
@@ -66,6 +67,7 @@ to render an audio player for your song as part of the page.
 | topic | topic to look for the audio file | current topic |
 | preload | boolean whether the player should pre-load the beginning of the audio file when the page is loaded | off |
 | autoplay | boolean whether the audio should immediately start playing when the page containing the %AUDIO macro is loaded | off |
+| start | seconds when to start the audio | 0 |
 | skin | name of the skin used for the player: "default", "ted" or "wmp" | default |
 
 ---++ Installation Instructions
@@ -76,6 +78,7 @@ to render an audio player for your song as part of the page.
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  13 Jan 2024: | added =start= parameter |
 |  25 Jan 2024: | added missing css file |
 |  15 Jan 2024: | update to mediaelement-7.0.2 |
 |  23 Aug 2022: | update to mediaelement-5.0.5 |
@@ -89,11 +92,11 @@ to render an audio player for your song as part of the page.
 |  02 Sep 2016: | updated to latest release of mejs |
 |  12 Dec 2014: | initial release |
 
-%META:FILEATTACHMENT{name="Audio.png" attachment="MediaElementSnap3.png" attr="" comment="" date="1574085126" size="2461" user="ProjectContributor" version="1"}%
-%META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1574085126" size="189478" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="Audio.png" attachment="MediaElementSnap3.png" attr="" comment="" date="1736790430" size="2461" user="ProjectContributor" version="1"}%
+%META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1736790430" size="189478" user="ProjectContributor" version="1"}%
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2024 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2025 Michael Daum"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%

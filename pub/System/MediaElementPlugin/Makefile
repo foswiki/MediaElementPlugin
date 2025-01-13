@@ -23,7 +23,7 @@ $(BUILD_DIR)/%.js: $(BUILD_DIR)/%.uncompressed.js
 	@echo minifying $@ from $<
 	@$(JSMIN) $< > $@; \
 
-$(BUILD_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js
+$(BUILD_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js $(SRC_DIR)/media_start.uncompressed.js
 	@echo generating $@
 	@$(CAT) $^ > $@
 

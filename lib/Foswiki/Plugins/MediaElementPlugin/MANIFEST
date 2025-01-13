@@ -2,6 +2,7 @@
 data/System/MediaElementPlugin.txt 0644
 lib/Foswiki/Plugins/MediaElementPlugin/Core.pm 0644
 lib/Foswiki/Plugins/MediaElementPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/MediaElementPlugin/MANIFEST 0644
 lib/Foswiki/Plugins/MediaElementPlugin.pm 0644
 pub/System/MediaElementPlugin/Audio.png 0644
 pub/System/MediaElementPlugin/build/mejs-controls.svg 0644
@@ -86,5 +87,6 @@ pub/System/MediaElementPlugin/lib/mediaelement-and-player.js 0644
 pub/System/MediaElementPlugin/lib/mediaelementplayer.css 0644
 pub/System/MediaElementPlugin/Makefile 0644
 pub/System/MediaElementPlugin/src/mediaelement.init.uncompressed.js 0644
+pub/System/MediaElementPlugin/src/media_start.uncompressed.js 0644
 pub/System/MediaElementPlugin/src/styles.uncompressed.css 0644
 pub/System/MediaElementPlugin/Video.png 0644

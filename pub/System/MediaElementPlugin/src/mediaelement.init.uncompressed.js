@@ -6,8 +6,18 @@ jQuery(function($) {
 
   $("audio.jqMediaElement, video.jqMediaElement").livequery(function() {
     var $this = $(this), 
-        opts = $.extend({}, defaults, $this.data());
+        opts = $.extend({}, defaults, $this.data()),
+        player;
 
-    $this.mediaelementplayer(opts);
+    $this.mediaelementplayer(opts),
+    player = $this.data("mediaelementplayer");
+
+    if (opts.currentTime) {
+      this.currentTime = opts.currentTime;
+    }
+
+    if (opts.autoplay) {
+      player.play();
+    }
   });
 });

@@ -1,6 +1,6 @@
 # Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 # 
-# Copyright (C) 2013-2024 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2013-2025 Michael Daum http://michaeldaumconsulting.com
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -117,7 +117,7 @@ sub handleVIDEO {
   }
 
   my $preload = Foswiki::Func::isTrue($params->{preload}, 0) ? '':'preload="none"';
-  my $autoplay = Foswiki::Func::isTrue($params->{autoplay}, 0) ? 'autoplay':'';
+  my $autoplay = Foswiki::Func::isTrue($params->{autoplay}, 0) ? 'data-autoplay="true"':'';
 
   my $skin = $params->{skin} || '';
   my $class = '';
@@ -141,8 +141,11 @@ sub handleVIDEO {
   $width = (defined $width) ? "width='$width'": "";
   $height = (defined $height) ? "height='$height'": "";
 
+  my $startTime = $params->{start} // '';
+  $startTime = "data-current-time='$startTime'" if $startTime;
+
   my $result = <<HERE;
-<video id="$id" class="jqMediaElement $class" style="max-width:100%;$style" $width $height $poster $controls $autoplay $preload $stretch>
+<video id="$id" class="jqMediaElement $class" style="max-width:100%;$style" $width $height $poster $controls $autoplay $preload $stretch $startTime>
 $videos
 </video>
 HERE
