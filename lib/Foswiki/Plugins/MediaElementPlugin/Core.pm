@@ -1,6 +1,6 @@
 # Foswiki - The Free and Open Source Wiki, http://foswiki.org/
 # 
-# Copyright (C) 2013-2025 Michael Daum http://michaeldaumconsulting.com
+# Copyright (C) 2013-2026 Michael Daum http://michaeldaumconsulting.com
 # 
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -45,7 +45,7 @@ sub new {
     $class->SUPER::new(
       $session,
       name => 'MediaElement',
-      version => '7.0.2',
+      version => '7.1.0',
       author => 'John Dyer',
       homepage => 'https://www.mediaelementjs.com',
       puburl => '%PUBURLPATH%/%SYSTEMWEB%/MediaElementPlugin/build',
@@ -150,6 +150,9 @@ $videos
 </video>
 HERE
 
+  $result =~ s/^\s+//;
+  $result =~ s/\s+$//;
+
   return $result;
 }
 
@@ -176,6 +179,9 @@ sub handleAUDIO {
   my $result = <<HERE;
 <audio class="jqMediaElement $class" src="$url" $autoplay $preload></audio>
 HERE
+
+  $result =~ s/^\s+//;
+  $result =~ s/\s+$//;
 
   return $result;
 }

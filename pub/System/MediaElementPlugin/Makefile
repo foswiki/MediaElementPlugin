@@ -1,9 +1,10 @@
 FOSWIKI_ROOT?=~/foswiki/core
 
 TARGET= \
-  $(BUILD_DIR)/pkg.js \
-  $(BUILD_DIR)/pkg.css \
-  $(BUILD_DIR)/mejs-controls.svg
+  build \
+  build/pkg.js \
+  build/pkg.css \
+  build/mejs-controls.svg
 
 SUBDIRS=lang
 
@@ -16,18 +17,16 @@ SUBDIRS=lang
 git:
 	git clone https://github.com/mediaelement/mediaelement.git git
 
-clean:
-	rm -f $(TARGET) $(BUILD_DIR)/*
-
-$(BUILD_DIR)/%.js: $(BUILD_DIR)/%.uncompressed.js
+	
+build/%.js: build/%.uncompressed.js
 	@echo minifying $@ from $<
 	@$(JSMIN) $< > $@; \
 
-$(BUILD_DIR)/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js $(SRC_DIR)/media_start.uncompressed.js
+build/pkg.uncompressed.js: $(LIB_DIR)/mediaelement-and-player.js $(SRC_DIR)/mediaelement.init.uncompressed.js $(SRC_DIR)/media_start.uncompressed.js
 	@echo generating $@
 	@$(CAT) $^ > $@
 
-$(BUILD_DIR)/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css $(SRC_DIR)/styles.uncompressed.css
+build/pkg.uncompressed.css: $(LIB_DIR)/mediaelementplayer.css $(SRC_DIR)/styles.uncompressed.css
 	@echo getting from upstream $@
 	@$(CAT) $^ > $@
 
@@ -36,8 +35,13 @@ $(LIB_DIR)/%: git/build/%
 	@echo getting from upstream $@
 	@$(CAT) $^ > $@
 
-$(BUILD_DIR)/%: git/build/%
+build/%: git/build/%
 	@echo getting from upstream $@
 	@$(CAT) $^ > $@
 endif
 
+clean:
+	rm -f build/*
+
+build:
+	@mkdir build

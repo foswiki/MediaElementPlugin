@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1736790430" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1736790430" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -78,6 +78,7 @@ to render an audio player for your song as part of the page.
 
 ---++ Change History
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  27 Feb 2026: | updated to mediaelement-7.1.0 |
 |  13 Jan 2024: | added =start= parameter |
 |  25 Jan 2024: | added missing css file |
 |  15 Jan 2024: | update to mediaelement-7.0.2 |
@@ -96,7 +97,7 @@ to render an audio player for your song as part of the page.
 %META:FILEATTACHMENT{name="Video.png" attachment="MediaElementSnap2.png" attr="" comment="" date="1736790430" size="189478" user="ProjectContributor" version="1"}%
 %META:FORM{name="PackageForm"}%
 %META:FIELD{name="Author" title="Author" value="Michael Daum"}%
-%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2016, John Dyer http://j.hn, &copy; 2014-2025 Michael Daum"}%
+%META:FIELD{name="Copyright" title="Copyright" value="&copy; 2010-2017, John Dyer http://j.hn, &copy; 2014-2026 Michael Daum"}%
 %META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
 %META:FIELD{name="Home" title="Home" value="Foswiki:Extensions/%TOPIC%"}%
 %META:FIELD{name="License" title="License" value="[[http://www.gnu.org/licenses/gpl.html][GPL (Gnu General Public License)]]"}%
